@@ -1,13 +1,12 @@
 import React from 'react';
-
 import './App.css';
-import Header from './Componets/Header';
+import Header from './Header';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <h1>Lets Build Gmail</h1>
+       <Header/>
+       <h2> G-Mail Remake </h2>
     </div>
   );
 }
