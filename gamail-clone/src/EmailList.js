@@ -1,3 +1,6 @@
+// The Purpose of this Layer is to Display all Recived Mail , both Displaying the Message and the Sender
+// And Giving the Users the Ability to Move Inbetween Tabs/Sections of Mail
+
 import React from 'react'
 import "./EmailList.css"
 import { IconButton , Checkbox } from '@material-ui/core';
@@ -8,6 +11,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import KeyboardHideIcon from '@material-ui/icons/KeyboardHide';
 import SettingsIcon from '@material-ui/icons/Settings';
+import InboxIcon from '@material-ui/icons/Inbox';
+import PeopleIcon from '@material-ui/icons/People';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import Section from './Section';
 
 function EmailList() {
     return (
@@ -41,6 +48,9 @@ function EmailList() {
                 </div>
             </div>
             <div className="emailList_sections">
+                <Section Icon={InboxIcon} title="primary" color="red" selected/>
+                <Section Icon={PeopleIcon} title="social" color="#1A73E8" selected/>
+                <Section Icon={LocalOfferIcon} title="Promotions" color="green" selected/>
 
             </div>
         </div>
