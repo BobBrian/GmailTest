@@ -3,7 +3,7 @@
 
 import { Button , IconButton } from '@material-ui/core'
 import React from 'react'
-import './Sidebar.css'
+import "./Sidebar.css"
 import AddIcon from "@material-ui/icons/Add"
 import SidebarOption from './SidebarOption'
 import InboxIcon from "@material-ui/icons/Inbox"
@@ -21,9 +21,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 function Sidebar() {
     return (
         <div className="sidebar">
-            <Button startIcon={<AddIcon fontSize="large" className="sidebarcompose"/>}>
-                Compose
-            </Button>
+            <Button startIcon={<AddIcon fontSize="large" className="sidebarcompose"/>}>Compose </Button>
 
             <SidebarOption Icon={InboxIcon} title="Inbox" number ={54} selected={true}/>
             <SidebarOption Icon={StarIcon} title="Starred" number ={54}/>

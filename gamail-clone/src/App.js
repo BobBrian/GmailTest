@@ -12,20 +12,18 @@ function App() {
         <div className="App">
           <Header/>
           <div className="app_body">
-          </div>
           <Sidebar/>
+            <Switch>
+              <Route path="/mail">
+                <Mail/>
+              </Route>
 
-          <Switch>
-
-            <Route path="/mail">
-              <Mail/>
-            </Route>
-
-            <Route path="/">
-              <EmailList/>
-            </Route>
-            
+              <Route path="/">
+                <EmailList/>
+              </Route>
           </Switch>
+          </div>
+          
         </div>
     </Router>
     
