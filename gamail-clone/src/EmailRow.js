@@ -1,5 +1,5 @@
 // Responsible for Rendering the Emails in a Row of Information showing the Sender , Bits of the Message and the Time it was Sent
-// Also Allows Users to Click on the Message to Exapnd the Message and get Extra Infromation 
+// Also Allows Users to Click on the Message to Expand the Message and get Extra Infromation 
 
 import React from 'react'
 import "./EmailRow.css"
@@ -7,11 +7,15 @@ import { IconButton } from '@material-ui/core';
 import Checkbox from "@material-ui/core/Checkbox"
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+import { useHistory } from 'react-router';
 
 
 function EmailRow({id, title, subject,  description , time}) {
+
+    const history = useHistory() // Gives us the History of the Web Page. Esstentily allows us to push a Webpage onto our Browser
+
     return (
-        <div className="emailRow">
+        <div onClick={() => history.push("/mail")} className="emailRow">
             <div className="emailRow_Options">
                 <Checkbox/>
                 <IconButton>
