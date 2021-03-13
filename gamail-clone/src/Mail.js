@@ -50,9 +50,9 @@ function Mail() {
                 <div className="mail_bodyHeader" >
                     <h2>Subject</h2>
                     <LabelImportantIcon className="mail_important"/>
+                    <ErrorIcon/>
                     <p>Title</p>
                     <p className="mail_time">10Pm</p>
-
                 </div>
                 
                 <div className="mail_message">
