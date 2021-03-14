@@ -9,8 +9,9 @@ export const mailSlice = createSlice({
     sendMessageisOpen: false,
   },
   reducers: {
+    // this is repsonsible for changing a piece of state in the data layer. It is triggered by the
+    // Compose button setting it to true when opebed adnd false when close
     openSendMessage: state => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
       state.sendMessageisOpen = true;
     },
     closeSendMessage: state => {
