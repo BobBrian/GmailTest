@@ -6,22 +6,22 @@ import { createSlice } from '@reduxjs/toolkit';
 export const mailSlice = createSlice({
   name: 'mail',
   initialState: {
-    sendMessageisOpen: false,
+    sendMessageIsOpen: false,
   },
   reducers: {
     // this is repsonsible for changing a piece of state in the data layer. It is triggered by the
     // Compose button setting it to true when opebed adnd false when close
-    openSendMessage: state => {
-      state.sendMessageisOpen = true;
+    openSendMessage: (state) => {
+      state.sendMessageIsOpen = true;
     },
-    closeSendMessage: state => {
-      state.sendMessageisOpen = false;
+    closeSendMessage: (state) => {
+      state.sendMessageIsOpen = false;
     },
   },
 });
 
-export const { openSendMessage, closeSendMessage } = counterSlice.actions;
+export const { openSendMessage, closeSendMessage } = mailSlice.actions;
 
-export const selectSendMessageIsOpen = (state) => state.mail.sendMessageisOpen;
+export const selectSendMessageIsOpen = (state) => state.mail.sendMessageIsOpen;
 
 export default mailSlice.reducer;
