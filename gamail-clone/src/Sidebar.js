@@ -22,7 +22,7 @@ import { openSendMessage } from './features/mailSlice'
 
 function Sidebar() {
 
-    const dispatch = useDispatch();
+   
 
     return (
         <div className="sidebar">
@@ -31,7 +31,7 @@ function Sidebar() {
              // the purpose of this is that since the SendMessage variable is set to false , when we click the compose Button
              // it sets the OpenSendMessage Variable to True which causes the Send Message File to Open allowing us to 
              // Send Emails
-             onClick={() => dispatch(openSendMessage())}
+             
             >
               Compose 
             </Button>

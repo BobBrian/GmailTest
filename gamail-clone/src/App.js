@@ -11,10 +11,6 @@ import { selectSendMessageIsOpen } from './features/mailSlice';
 
 function App() {
 
-  //The Useselector will allow us to fetch that data form the redux stor( which is located in the dataLayer )
-  const sendMessageIsOpen =  useSelector(selectSendMessageIsOpen);
-
-
   return (
     <Router>
         <div className="App">
@@ -33,7 +29,7 @@ function App() {
           </div>
           {/* Send mail is responsbile for actually transporting the messages to firebase */}
           {/* We set the SendMessageIsOpen to False so that the SendMail File isn't Open by Default when the Program Loads */}
-          {sendMessageIsOpen && <SendMail/>}
+           <SendMail/>
           
         </div>
     </Router>

@@ -11,23 +11,23 @@ import { closeSendMessage } from './features/mailSlice';
 
 function SendMail() {
 
-    const { register, handleSumbit, watch, errors} = useForm();
+    const { register, handleSubmit, watch, errors} = useForm();
 
     const onSubmit = (formData) =>{
-        console.log(formData) // This is here to display the entered data in the Pages Element Section . Now We Need to Dispaly it onto the Screen
+        console.log(formData); // This is here to display the entered data in the Pages Element Section . Now We Need to Dispaly it onto the Screen
 
     }
 
-    const dispatch = useDispatch();
+
 
     return (
         <div className="sendmail">
             <div className="sendmail_header">
                 <h3>New Messages</h3>
-                <CloseIcon onClick={() => dispatch(closeSendMessage())} className="sendmail_close" />
+                <CloseIcon  className="sendmail_close" />
             </div>
 
-            <form onSubmit={handleSumbit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <input 
                     placeholder="to" 
                     type="text"
@@ -43,7 +43,7 @@ function SendMail() {
                     type="text"
                     ref={register({required: true})}
                 />
-                {errors.subject && (<p className="sendmail_error">To is Required</p>)}
+                {errors.subject && (<p className="sendmail_error">Subject is Required</p>)}
 
                 <input 
                     placeholder="message..." 
@@ -51,7 +51,7 @@ function SendMail() {
                     className="sendmail_message"
                     ref={register({required: true})}
                 />
-                {errors.message && (<p className="sendmail_error">To is Required</p>)}
+                {errors.message && (<p className="sendmail_error">Message is Required</p>)}
 
                 <div className="sendmail_options">
                     <Button
