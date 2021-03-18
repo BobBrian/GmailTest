@@ -16,8 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PersonIcon from '@material-ui/icons/Person';
 import DuoIcon from '@material-ui/icons/Duo';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { useDispatch } from 'react-redux'
-import { openSendMessage } from './features/mailSlice'
+
 
 
 function Sidebar() {
@@ -28,10 +27,9 @@ function Sidebar() {
         <div className="sidebar">
             <Button 
              startIcon={<AddIcon fontSize="large" className="sidebarcompose"/>}
-             // the purpose of this is that since the SendMessage variable is set to false , when we click the compose Button
-             // it sets the OpenSendMessage Variable to True which causes the Send Message File to Open allowing us to 
-             // Send Emails
-             
+                // the purpose of this is that since the SendMessage variable is set to false , when we click the compose Button
+                // it sets the OpenSendMessage Variable to True which causes the Send Message File to Open allowing us to 
+                // Send Emails
             >
               Compose 
             </Button>

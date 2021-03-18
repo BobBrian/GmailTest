@@ -5,68 +5,49 @@ import React from 'react'
 import "./SendMail.css"
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '@material-ui/core';
-import {useForm} from "react-hook-form";
-import { useDispatch } from 'react-redux';
-import { closeSendMessage } from './features/mailSlice';
-
+import {useForm} from "react-hook-form"
+ 
 function SendMail() {
+    const {register, handleSubmit, watch , errors} = useForm()
 
-    const { register, handleSubmit, watch, errors} = useForm();
-
-    const onSubmit = (formData) =>{
-        console.log(formData); // This is here to display the entered data in the Pages Element Section . Now We Need to Dispaly it onto the Screen
-
+    const onSubmit = (formData) => {
+        console.log(formData);
     }
-
 
 
     return (
         <div className="sendmail">
             <div className="sendmail_header">
-                <h3>New Messages</h3>
-                <CloseIcon  className="sendmail_close" />
+                <h3>Close Message</h3>
+                <CloseIcon className="sendmail_close"/>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input 
-                    placeholder="to" 
-                    type="text"
-                    ref={register({required: true})} // this right here is a validation rule that wont allow this fields to be entered unless
-                    // the user is registered within the system
-                />
-                {/* Next is the Implementation of Error Messages When fields are not Filled in */}
-                {errors.to && (<p className="sendmail_error">To is Required</p>)}
+                <input name="to" placeholder="To" type="text" ref={register({ required:true })}/>
+                {errors.to && <p className="sendmail_error">To is Required</p>}
 
-
-                <input 
-                    placeholder="subject" 
-                    type="text"
-                    ref={register({required: true})}
-                />
+                <input name="subject" placeholder="Subject" type="text" ref={register({ required:true })} />
                 {errors.subject && (<p className="sendmail_error">Subject is Required</p>)}
 
-                <input 
-                    placeholder="message..." 
+                <input name="message"
+                    placeholder="Message" 
                     type="text" 
-                    className="sendmail_message"
-                    ref={register({required: true})}
+                    className="sendmail_message" 
+                    ref={register({ required:true })}
                 />
                 {errors.message && (<p className="sendmail_error">Message is Required</p>)}
 
                 <div className="sendmail_options">
-                    <Button
-                        className="sendmail_send"
-                        variant="container"
-                        color="primary"
+                    <Button 
+                        className="sendmail_send" 
+                        variant="contained" 
+                        color="primary" 
                         type="submit"
                     >Send</Button>
-
                 </div>
-            
             </form>
-
+            
         </div>
-        
     )
 }
 

@@ -6,8 +6,8 @@ import { BrowserRouter as Router , Switch, Route, Link} from "react-router-dom";
 import Mail from './Mail';
 import EmailList from './EmailList';
 import SendMail from './SendMail';
-import { useSelector } from 'react-redux';
-import { selectSendMessageIsOpen } from './features/mailSlice';
+
+
 
 function App() {
 
@@ -27,9 +27,7 @@ function App() {
               </Route>
           </Switch>
           </div>
-          {/* Send mail is responsbile for actually transporting the messages to firebase */}
-          {/* We set the SendMessageIsOpen to False so that the SendMail File isn't Open by Default when the Program Loads */}
-           <SendMail/>
+          <SendMail/>
           
         </div>
     </Router>
