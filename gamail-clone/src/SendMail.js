@@ -6,24 +6,32 @@ import "./SendMail.css"
 import CloseIcon from '@material-ui/icons/Close';
 import { Button } from '@material-ui/core';
 import {useForm} from "react-hook-form"
+import { useDispatch } from 'react-redux';
+import { closeSendMessage } from './features/mailSlice';
  
 function SendMail() {
     const {register, handleSubmit, watch , errors} = useForm()
+    
+    const dispatch = useDispatch()
 
     const onSubmit = (formData) => {
         console.log(formData);
     }
 
-
     return (
         <div className="sendmail">
             <div className="sendmail_header">
                 <h3>Close Message</h3>
-                <CloseIcon className="sendmail_close"/>
+                
+                <CloseIcon 
+                 className="sendmail_close"
+                 // the Purpose of the Click fucntion is to change the state of the sendMessage fucntion back to false which causes it to close
+                 onClick={() => dispatch(closeSendMessage())}
+                />
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input name="to" placeholder="To" type="text" ref={register({ required:true })}/>
+                <input name="to" placeholder="To" type="email" ref={register({ required:true })}/>
                 {errors.to && <p className="sendmail_error">To is Required</p>}
 
                 <input name="subject" placeholder="Subject" type="text" ref={register({ required:true })} />
