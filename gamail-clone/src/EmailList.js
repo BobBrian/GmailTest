@@ -1,7 +1,7 @@
 // The Purpose of this Layer is to Display all Recived Mail , both Displaying the Message and the Sender
 // And Giving the Users the Ability to Move Inbetween Tabs/Sections of Mail
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./EmailList.css"
 import { IconButton , Checkbox } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -16,8 +16,25 @@ import PeopleIcon from '@material-ui/icons/People';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Section from './Section';
 import EmailRow from './EmailRow';
+import { db } from './firebase';
 
 function EmailList() {
+
+    //Creation of these State Pieces to Store the Mail Sent to the Firebase Server
+    const [emails, setEmails] = useState([])
+
+    // The Use Effect used to Map the Data of the Use State and Display it
+    useEffect(() =>{
+        db.collection('emails')
+        .orderBy('timestamp','desc')
+        .onSnapshot(snapshot => setEmails(snapshot.docs.map(doc =>({
+            id: doc.id,
+            data: doc.data(),
+
+        }))))
+    }, [])
+
+
     return (
         <div className="emailList">
             <div className="emailSettings">
