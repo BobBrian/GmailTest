@@ -24,6 +24,7 @@ function EmailList() {
     const [emails, setEmails] = useState([])
 
     // The Use Effect used to Map the Data of the Use State and Display it
+    // This is here to Load all the Emails when the Project Startsup
     useEffect(() =>{
         db.collection('emails')
         .orderBy('timestamp','desc')
@@ -72,6 +73,18 @@ function EmailList() {
 
             </div>
             <div className="emailList_List">
+                {/*This is one of the Highlight components of this Program as the purpose of this is to display all informations that gets
+                sent to firebase*/}
+                {emails.map(({id, data:{to, subject, message , timestamp }}) => (
+                    <EmailRow
+                    id={id}
+                    key={id}
+                    title={to}
+                    subject={subject}
+                    description={message}
+                    time={new Date(timestamp?.seconds * 1000).toUTCString()}
+                    />
+                ))}
                 {/* Keep Note that the Message here is mere Dummy Data at the Current Moment*/}
                 <EmailRow
                     tile = "Twitch"

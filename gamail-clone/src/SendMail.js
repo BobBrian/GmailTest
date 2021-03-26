@@ -21,14 +21,16 @@ function SendMail() {
         console.log(formData);
         // the next step is to import the localized data into our firebase server 
         db.collection('emails').add(
+            // Here we push objects into the database
             {
                 to:formData.to,
                 subject:formData.subject,
                 message:formData.message,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                // used the get the server timestamp for when data is pushed
             });
 
-        dispatch(closeSendMessage())
+        dispatch(closeSendMessage());
     };
 
     return (
