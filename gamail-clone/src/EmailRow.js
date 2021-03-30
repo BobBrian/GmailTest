@@ -8,14 +8,32 @@ import Checkbox from "@material-ui/core/Checkbox"
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { selectMail } from './features/mailSlice';
 
 
 function EmailRow({id, title, subject,  description , time}) {
 
     const history = useHistory() // Gives us the History of the Web Page. Esstentily allows us to push a Webpage onto our Browser
+    const dispatch = useDispatch();
+
+    // constatn variable to redirect to the mail
+    const openMail = () =>{
+        dispatch(selectMail({
+            //these will be the selected mail inside the state.
+            id, 
+            title, 
+            subject, 
+            description, 
+            time
+        }));
+
+        history.push("/mail") // redirects them directly to the mail
+        
+    }
 
     return (
-        <div onClick={() => history.push("/mail")} className="emailRow">
+        <div onClick={openMail} className="emailRow">
             <div className="emailRow_Options">
                 <Checkbox/>
                 <IconButton>

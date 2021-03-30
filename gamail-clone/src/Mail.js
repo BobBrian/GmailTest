@@ -11,11 +11,14 @@ import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
+import { selectOpenMail } from './features/mailSlice';
 
 
 function Mail() {
 
     const history = useHistory(); // Here it create functionality that allows us to Revert to the Previous Page
+    const selectedMail = useSelector(selectOpenMail);
 
     return (
         <div className="mail">
@@ -47,16 +50,18 @@ function Mail() {
                 </div>    
             </div>
             <div className="mail_body">
+                {/* Here all the hardcoded messages will be replaced with the selectedMail state since it replaces the payload
+                and can be found in the state tab*/}
                 <div className="mail_bodyHeader" >
-                    <h2>Subject</h2>
+                    <h2>{selectedMail?.subject}</h2>
                     <LabelImportantIcon className="mail_important"/>
                     <ErrorIcon/>
-                    <p>Title</p>
-                    <p className="mail_time">10Pm</p>
+                    <p>{selectedMail?.title}</p>
+                    <p className="mail_time">{selectedMail?.time}</p>
                 </div>
                 
                 <div className="mail_message">
-                     <p>This is a Test Message</p> 
+                     <p>{selectedMail?.description}</p> 
                 </div>
             </div>
         </div>
