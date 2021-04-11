@@ -5,8 +5,7 @@ export const userSlice = createSlice({
   name:"user",
 
   initialState: {
-    user:null
-    
+    user: null
   },
 
   reducers: {
