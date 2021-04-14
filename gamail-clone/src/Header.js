@@ -8,8 +8,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { useDispatch } from 'react-redux';
 
 function Header() {
+    const dispatch = useDispatch();
+
+    const signOut = () =>{
+        auth.signOut.then(() => {
+            dispatch(logout())
+        })
+    }
+
     return (
         <div className="header">
             <div className="headerleft">
@@ -33,7 +42,7 @@ function Header() {
                 <IconButton>
                     <NotificationsIcon/>
                 </IconButton>
-                <Avatar/>
+                <Avatar onClick={signOut}/>
             </div>
         </div>
     )

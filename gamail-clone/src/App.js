@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSendMessageIsOpen } from './features/mailSlice';
 import { selectUser } from './features/userSlice';
 import Login from './Login';
+import { auth } from './firebase';
 
 
 
@@ -20,6 +21,17 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() =>{
+    auth.OnAuthStateChanged(user =>{
+      if (user){
+        // if the user is Logged in
+        dispatch(login({
+          displayName: user.displayName,
+          email:user.email,
+          photoUrl:user.photoUrl,
+
+        }))
+      }
+    })
 
   }, [])
 
