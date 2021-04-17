@@ -8,7 +8,7 @@ import EmailList from './EmailList';
 import SendMail from './SendMail';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSendMessageIsOpen } from './features/mailSlice';
-import { selectUser } from './features/userSlice';
+import { login, selectUser } from './features/userSlice';
 import Login from './Login';
 import { auth } from './firebase';
 
@@ -21,7 +21,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() =>{
-    auth.OnAuthStateChanged(user =>{
+    auth.onAuthStateChanged(user =>{
       if (user){
         // if the user is Logged in
         dispatch(login({
